@@ -1,114 +1,149 @@
-# RetroJukebox Installation Guide
+# Retro MP3 Player
 
-RetroJukebox is a desktop music player with retro-styled UI themes. This document explains how to install RetroJukebox on your computer.
+A nostalgic retro-style MP3 player built with PyQt5 featuring playback controls, playlist management, and customizable themes.
 
-## Requirements
+![Retro MP3 Player](generated-icon.png)
 
-- Python 3.7 or higher
-- Internet connection (for downloading dependencies)
-- A supported operating system: Windows, macOS, or Linux
+## Features
 
-## Installation Methods
+- **MP3 File Import**: Open MP3 files or entire folders to add to your playlist
+- **Playback Controls**: Play, pause, stop, next/previous track
+- **Volume Control**: Adjust volume with slider and mute toggle
+- **Track Progress Bar**: Shows current playback position with seek functionality
+- **Playlist Management**: Create, load, and save playlists
+- **Shuffle & Repeat**: Randomize playback or loop tracks/playlists
+- **Track Information Display**: See title, artist, album, and other metadata
+- **Album Art Display**: View album covers when available
+- **Song Duration & Time Left**: Track elapsed and remaining time
+- **Equalizer Presets**: Apply genre-specific audio profiles
+- **File Metadata Display**: View bitrate, sample rate, and file size
+- **Multiple Themes**: Switch between light, dark, and retro themes
+- **Background Playback**: Continue listening while using other applications
+- **Audio Speed Control**: Adjust playback speed from 0.5x to 2.0x
+- **Song Search**: Find tracks in your playlist by title or artist
+- **Song Ratings**: Rate your music and filter by rating
+- **Custom Hotkeys**: Keyboard shortcuts for common actions
+- **Skip Timer**: Automatically move to the next song after a set time
+- **Import Songs from Folder**: Bulk import all MP3 files from a directory
+- **Audio Visualizer**: Visual representation of the playing audio
+- **Fade In/Out Effects**: Smooth transitions between tracks
+- **Command Line Controls**: Control the player via command line
+- **Save and Load Settings**: Remember your preferences between sessions
 
-### Method 1: Using the Installer Script (Recommended)
+## Installation
 
-The easiest way to install RetroJukebox is to use the included installer script.
+### Prerequisites
 
-1. Make sure you have Python installed on your system.
-2. Download the RetroJukebox package from the release page or clone the repository.
-3. Open a terminal or command prompt.
-4. Navigate to the RetroJukebox directory.
-5. Run the installer script:
+- Python 3.9 or higher
+- PyQt5
+- Mutagen (for metadata handling)
 
-```
-python installer.py
-```
+### Linux-specific Requirements
 
-The installer will:
-- Check if your system meets the requirements
-- Install all necessary dependencies
-- Copy the application files to your home directory
-- Create shortcuts on your desktop and in your applications menu
-- Configure platform-specific settings
-
-### Method 2: Manual Installation
-
-If you prefer to install RetroJukebox manually, follow these steps:
-
-1. Make sure you have Python 3.7 or higher installed.
-2. Install the required dependencies:
-
-```
-pip install PyQt5 pygame mutagen numpy
-```
-
-3. Download the RetroJukebox package.
-4. Extract the package to your desired location.
-5. Run the application:
+If you're running on Linux, you'll need the OpenGL libraries:
 
 ```
-cd path/to/RetroJukebox
-python main.py
+# Ubuntu/Debian
+sudo apt-get install libgl1-mesa-glx
+
+# Fedora
+sudo dnf install mesa-libGL
+
+# Arch Linux
+sudo pacman -S mesa
 ```
 
-## Platform-Specific Notes
+These libraries are required for PyQt5 applications. Without them, you'll see the error:
+`libGL.so.1: cannot open shared object file: No such file or directory`
 
-### Windows
+### Option 1: Using the Installer (Recommended)
 
-On Windows, the installer creates:
-- A desktop shortcut
-- A start menu entry
-- A batch file for running the application with the correct environment variables
-
-If you experience issues with the Qt platform, try running the `win_launcher.bat` file created in the installation directory.
-
-### Linux
-
-On Linux, the installer creates:
-- A desktop shortcut
-- An entry in your applications menu
-- A shell script for running the application with the correct environment variables
-
-If you experience issues with display, try running the `linux_launcher.sh` script created in the installation directory.
-
-### macOS
-
-On macOS, the installer creates:
-- A symlink in your Applications folder
-- A shell script for running the application
-
-## Troubleshooting
-
-If you encounter any issues during installation:
-
-1. Check that you have the correct Python version installed:
+1. Download the installer package `retro-mp3-player-installer-20250510.zip`
+2. Extract the ZIP file
+3. Run the installer script:
+   - **Windows**: Double-click `install.bat`
+   - **macOS/Linux**: Open terminal and run `bash install.sh`
+   
+Alternatively, you can use the Python-based installer:
 ```
-python --version
+python setup.py
 ```
 
-2. Make sure you have pip installed and updated:
+### Option 2: Manual Installation
+
+1. Install required packages:
+   ```
+   pip install PyQt5 mutagen
+   ```
+2. Clone or download this repository
+3. Navigate to the project directory
+4. Run the application:
+   ```
+   python main.py
+   ```
+
+## Usage
+
+### Nostalgic Boot Screen
+
+The player features a retro-style splash screen on startup that shows loading progress with a green terminal aesthetic. You can:
+
+- Skip the boot screen with the `--no-splash` command line option
+- Choose between different retro themes with the `--theme` option:
+  - `--theme green` - Classic terminal (default)
+  - `--theme blue` - 80s computing blue
+  - `--theme pink` - Vaporwave aesthetic
+
+### Basic Controls
+
+- **Play/Pause**: Space bar or middle button
+- **Next Track**: Ctrl+Right or right arrow button  
+- **Previous Track**: Ctrl+Left or left arrow button
+- **Volume Up/Down**: Ctrl+Up/Down or volume slider
+- **Mute**: Ctrl+M or speaker button
+- **Add Files**: Click "Add File" or drag and drop MP3 files
+- **Add Folder**: Click "Add Folder" to import all MP3s from a directory
+
+### Command Line Usage
+
+The player supports basic command line controls:
+
 ```
-pip --version
-python -m pip install --upgrade pip
+python main.py play
+python main.py pause
+python main.py next
+python main.py previous
+python main.py --file path/to/song.mp3
 ```
 
-3. Try manually installing the dependencies:
-```
-pip install --user PyQt5 pygame mutagen numpy
-```
+## Themes
 
-4. If you experience issues with audio playback, make sure your system has a working audio device.
+The player includes several themes to match your style:
 
-5. For other issues, please report them in the Issues section of the project repository.
+- Light Mode
+- Dark Mode
+- Retro Blue (80s style)
+- Retro Green (Terminal style)
+- Retro Pink (Vaporwave style)
 
-## Uninstalling
+Change themes through the Settings tab.
 
-To uninstall RetroJukebox:
+## Creating Playlists
 
-1. Delete the RetroJukebox folder from your home directory.
-2. Remove any shortcuts created during installation.
-3. Optionally, uninstall the Python dependencies if you don't use them for other projects.
+1. Add songs using "Add File" or "Add Folder"
+2. Arrange songs by dragging them in the playlist
+3. Click "Save Playlist" and choose a name
+4. Load playlists later using "Load Playlist"
 
 ## License
 
-RetroJukebox is distributed under the MIT License. See the LICENSE file for more information.
+This project is distributed under the MIT License. See `LICENSE` file for more information.
+
+## Acknowledgments
+
+- Icons from Feather Icons (https://feathericons.com/)
+- Built with PyQt5 and Mutagen
+
+## Author
+
+Created for retro music enthusiasts everywhere
