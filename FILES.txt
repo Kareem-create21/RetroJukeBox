@@ -1,0 +1,28 @@
+The following files should be included in the Retro MP3 Player installer package:
+
+DOCUMENTATION:
+- README.md
+- INSTALL.txt
+- LICENSE (if available)
+
+INSTALLERS:
+- install.bat (Windows)
+- install.sh (Unix/Linux/macOS)
+- setup.py (Python-based installer)
+
+LAUNCHER SCRIPTS:
+- run.bat (Windows)
+- run.sh (Unix/Linux/macOS)
+
+APPLICATION FILES:
+- main.py
+- player.py
+- playlist.py
+- metadata.py
+
+DIRECTORIES:
+- assets/ (all icon and image files)
+- ui/ (all UI component files)
+- utils/ (all utility files)
+
+Note: Sample MP3 files can be optionally included for testing purposes.
